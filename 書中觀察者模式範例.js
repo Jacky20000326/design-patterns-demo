@@ -1,38 +1,3 @@
-// class Secretary {
-
-//     attach(observer){
-//         observers.push(observer)
-//     }
-
-//     Notify(){
-//         observers.forEach(item => {
-//                 item.Update()
-//         });
-//     }
-
-//     constructor(SecretaryAction = action){
-//         this.SecretaryAction = SecretaryAction
-//         this.observers = []
-//     }
-// }
-
-// class StockObserver {
-//     constructor(name,sub){
-//         this.name = name
-//         this.sub = sub
-//     }
-
-//     Update(){
-//         console.log("")
-//     }
-// }
-
-// let secretary = new Secretary()
-// let staff = new StockObserver("Jacky")
-
-// secretary.attach()
-
-
 // ----- 觀察者模式 ------
 
 // 主題(被觀察者)
@@ -66,8 +31,10 @@ class ConcreteSubject extends Subject{
 class ConcreteObserver extends Observer  {
     constructor(subject,name){
         super()
-        this.name = name;
+        // 被觀察者初始化時把觀察者的實例丟進subject裡面了
         this.subject = subject;
+        this.name = name;
+       
     }
 
     Update(){
@@ -82,4 +49,5 @@ ConcreteSubjectInstance.Add(new ConcreteObserver(ConcreteSubjectInstance,'x'))
 ConcreteSubjectInstance.Add(new ConcreteObserver(ConcreteSubjectInstance,'y'))
 ConcreteSubjectInstance.Add(new ConcreteObserver(ConcreteSubjectInstance,'z'))
 ConcreteSubjectInstance.subjectState = "ABC"
+
 ConcreteSubjectInstance.Notify()
