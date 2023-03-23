@@ -10,6 +10,18 @@ class CashNormal extends CashSuper {
     }
 }
 
+// 打折收費
+class CashRebate extends CashSuper {
+    constructor(moneyRebate = 0.8) {
+        super();
+        this.moneyRebate = moneyRebate;
+    }
+
+    acceptCash(money) {
+        return money * this.moneyRebate;
+    }
+}
+
 // factory
 
 class CashFactory {
@@ -29,18 +41,6 @@ class CashFactory {
 
     getResult(money) {
         return this.cs.acceptCash(money);
-    }
-}
-
-// 打折收費
-class CashRebate extends CashSuper {
-    constructor(moneyRebate = 0.8) {
-        super();
-        this.moneyRebate = moneyRebate;
-    }
-
-    acceptCash(money) {
-        return money * this.moneyRebate;
     }
 }
 
