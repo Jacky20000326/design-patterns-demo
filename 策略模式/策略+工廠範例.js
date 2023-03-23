@@ -24,9 +24,10 @@ class CashRebate extends CashSuper {
 
 // factory
 
-class CashFactory {
+class CashContext {
     constructor(type) {
         let cs = null;
+        // 工廠
         switch (type) {
             case "正常收費":
                 cs = new CashNormal();
@@ -36,6 +37,7 @@ class CashFactory {
                 cs = new CashRebate();
                 break;
         }
+        // 工廠
         this.cs = cs;
     }
 
@@ -43,7 +45,7 @@ class CashFactory {
         return this.cs.acceptCash(money);
     }
 }
-
-let cashFactory = new CashFactory("正常收費");
+// 被抽換物件本身不知道
+let cashFactory = new CashContext("正常收費");
 // console.log(cashRebate.acceptCash(100));
 console.log(cashFactory.getResult(111));

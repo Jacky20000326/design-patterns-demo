@@ -11,6 +11,8 @@ class Operation {
         let result = 0;
         return result;
     }
+}
+class OperationFactory {
     // 透果判斷產生需要的實體
     static createOperation(operator) {
         let oper = null;
@@ -70,7 +72,9 @@ class OperationDiv extends Operation {
     }
 }
 
-let Oper = Operation.createOperation("-");
-Oper.numberA = 200;
-Oper.numberB = 20;
-Oper.getResult();
+let Oper = new OperationFactory();
+let result = Oper.createOperation("-");
+
+// Oper.numberA = 200;
+// Oper.numberB = 20;
+// Oper.getResult();
