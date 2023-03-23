@@ -1,3 +1,4 @@
+
 // ----- 觀察者模式 ------
 
 // 主題(被觀察者)
@@ -38,6 +39,7 @@ class ConcreteObserver extends Observer  {
     }
 
     Update(){
+        // 畫面更新
         this.observerState =  this.subject.subjectState
         console.log(`觀察者${this.name}的新狀態為${this.observerState}`)
     }
