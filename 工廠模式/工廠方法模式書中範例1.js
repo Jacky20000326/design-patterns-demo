@@ -6,25 +6,25 @@ class IFactory {
 
 class AddFactory extends IFactory {
     CreateOpration() {
-        return new OperayionAdd();
+        return new OperationAdd();
     }
 }
 
 class SubFactory extends IFactory {
     CreateOpration() {
-        return new OperayionSub();
+        return new OperationSub();
     }
 }
 
 class MulFactory extends IFactory {
     CreateOpration() {
-        return new OperayionMul();
+        return new OperationMul();
     }
 }
 
 class DivFactory extends IFactory {
     CreateOpration() {
-        return new OperayionDiv();
+        return new OperationDiv();
     }
 }
 

@@ -1,3 +1,5 @@
+// 從原本的簡單工廠變成，一個工廠抽象介面和多個具體產生物件的工廠。工廠方法爸簡單工廠的邏輯判斷移動到用戶端程式碼來進行
+// 這樣才會符合『開放-封閉原則』
 class Nightingale {
     Sweep() {
         console.log("掃地");
@@ -19,12 +21,14 @@ class IFactory {
     createCreateNightingale() {}
 }
 
+// 產生物件的工廠(畢業生)
 class UndergraduateFactory extends IFactory {
     createCreateNightingale() {
         return new Undergraduate();
     }
 }
 
+// 產生物件的工廠(義工)
 class VolunteerFactory extends IFactory {
     createCreateNightingale() {
         return new Volunteer();
@@ -47,6 +51,8 @@ class VolunteerFactory extends IFactory {
 //     }
 // }
 
-let factory = new UndergraduateFactory();
-let studentA = factory.createCreateNightingale();
+let ConcreteUndergraduateFactory = new UndergraduateFactory();
+let studentA = ConcreteUndergraduateFactory.createCreateNightingale();
 studentA.BuyRice();
+studentA.Sweep();
+studentA.Wash();

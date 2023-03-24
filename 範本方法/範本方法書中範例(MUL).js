@@ -29,5 +29,5 @@ class ConcreteClassB extends AbstractClass {
 let customA = new ConcreteClassA();
 customA.TemplateMethod();
 
-let customB = new ConcreteClassB();
-customB.TemplateMethod();
+// let customB = new ConcreteClassB();
+// customB.TemplateMethod();
