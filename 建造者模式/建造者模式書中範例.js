@@ -1,72 +1,69 @@
 class Product {
-    constructor() {
-        this.List = [];
+    constructor(){
+        this.parts = [];
     }
-    Add(part) {
-        this.List.push(part);
+    Add(part){
+        this.parts.push(part)
     }
-    Show() {
-        console.log("產品 建立-----");
-        this.List.forEach((listItem) => {
-            console.log(listItem);
-        });
+    Show(){
+        console.log('產品建立')
+        this.parts.forEach(item =>{
+            console.log(item)
+        })
     }
 }
 
-class Builder {
-    BuildPartA() {}
-    BuildPartB() {}
-    GetResult() {}
+class Builder{
+    BuildPartA(){}
+    BuildPartB(){}
+    GetResult(){}
 }
 
 class ConcreteBuilder1 extends Builder {
-    constructor() {
-        super();
-        this.product = new Builder();
+    constructor(){
+        super()
+        this.product = new Product();
+        
     }
-
-    BuildPartA() {
-        this.product.Add("零件A");
+    BuildPartA(){
+        this.product.Add('零件A')
     }
-    BuildPartB() {
-        this.product.Add("零件B");
+    BuildPartB(){
+        this.product.Add('零件B')
     }
-
-    GetResult() {
-        console.log(this.product);
+    GetResult(){
+        return this.product
     }
 }
 
 class ConcreteBuilder2 extends Builder {
-    constructor() {
-        super();
-        this.product = new Builder();
+    constructor(){
+        super()
+        this.product = new Product();
+        
     }
-
-    BuildPartA() {
-        this.product.Add("零件X");
+    BuildPartA(){
+        this.product.Add('零件A')
     }
-    BuildPartB() {
-        this.product.Add("零件Y");
+    BuildPartB(){
+        this.product.Add('零件B')
     }
-
-    GetResult() {
-        console.log(this.product);
+    GetResult(){
+        return this.product
     }
 }
 
 class Director {
-    Construct(builder) {
-        builder.BuildPartA();
-        builder.BuildPartB();
+    Construct(builder){
+        builder.BuildPartA()
+        builder.BuildPartB()
     }
 }
 
-// 用戶端程式碼
-let director = new Director();
-let builder1 = new ConcreteBuilder1();
-let builder2 = new ConcreteBuilder2();
-
-director.Construct(builder1);
-let product1 = builder1.GetResult();
-product1.Show();
+// 用戶端
+let director = new Director()
+let b1 = new ConcreteBuilder1()
+let b2 = new ConcreteBuilder2()
+director.Construct(b1)
+let p1 = b1.GetResult()
+p1.Show()
