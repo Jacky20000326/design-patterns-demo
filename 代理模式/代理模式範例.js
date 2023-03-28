@@ -16,6 +16,7 @@ class TaiwanProxySeller extends IMacSeller {
     }
 }
 
+// 使用者不該去new (獨體)
 let concreteTaiwanProxySeller = new TaiwanProxySeller();
 
 concreteTaiwanProxySeller.buy();
