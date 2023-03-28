@@ -35,14 +35,17 @@ class ConcreteDecoratorB extends Decorator {
         super.Operation();
         this.AddedBehavior();
         console.log("四體裝飾物件B的操作");
+        // console表示複雜程式碼()
     }
     AddedBehavior() {}
 }
 
+// 做裝飾的地方需要被包起來
 let concreteComponent = new ConcreteComponent();
 let concreteDecoratorA = new ConcreteDecoratorA();
 let concreteDecoratorB = new ConcreteDecoratorB();
 
+// 裝飾者
 concreteDecoratorA.SetComponent(concreteComponent);
 concreteDecoratorB.SetComponent(concreteDecoratorA);
 concreteDecoratorB.Operation();
