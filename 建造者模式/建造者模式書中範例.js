@@ -1,69 +1,68 @@
 class Product {
-    constructor(){
+    constructor() {
         this.parts = [];
     }
-    Add(part){
-        this.parts.push(part)
+    Add(part) {
+        this.parts.push(part);
     }
-    Show(){
-        console.log('產品建立')
-        this.parts.forEach(item =>{
-            console.log(item)
-        })
+    Show() {
+        console.log("產品建立");
+        this.parts.forEach((item) => {
+            console.log(item);
+        });
     }
 }
 
-class Builder{
-    BuildPartA(){}
-    BuildPartB(){}
-    GetResult(){}
+class Builder {
+    BuildPartA() {}
+    BuildPartB() {}
+    GetResult() {}
 }
 
 class ConcreteBuilder1 extends Builder {
-    constructor(){
-        super()
+    constructor() {
+        super();
         this.product = new Product();
-        
     }
-    BuildPartA(){
-        this.product.Add('零件A')
+    BuildPartA() {
+        this.product.Add("零件A");
     }
-    BuildPartB(){
-        this.product.Add('零件B')
+    BuildPartB() {
+        this.product.Add("零件B");
     }
-    GetResult(){
-        return this.product
+    GetResult() {
+        return this.product;
     }
 }
 
 class ConcreteBuilder2 extends Builder {
-    constructor(){
-        super()
+    constructor() {
+        super();
         this.product = new Product();
-        
     }
-    BuildPartA(){
-        this.product.Add('零件A')
+    BuildPartA() {
+        this.product.Add("零件A");
     }
-    BuildPartB(){
-        this.product.Add('零件B')
+    BuildPartB() {
+        this.product.Add("零件B");
     }
-    GetResult(){
-        return this.product
+    GetResult() {
+        return this.product;
     }
 }
-
+// 1.隔离了客户与对象的生产过程
+// 2.负责控制产品对象的生产过程。
 class Director {
-    Construct(builder){
-        builder.BuildPartA()
-        builder.BuildPartB()
+    Construct(builder) {
+        builder.BuildPartA();
+        builder.BuildPartB();
     }
 }
 
 // 用戶端
-let director = new Director()
-let b1 = new ConcreteBuilder1()
-let b2 = new ConcreteBuilder2()
-director.Construct(b1)
-let p1 = b1.GetResult()
-p1.Show()
+let director = new Director();
+let b1 = new ConcreteBuilder1();
+let b2 = new ConcreteBuilder2();
+director.Construct(b1);
+let p1 = b1.GetResult();
+p1.Show();
