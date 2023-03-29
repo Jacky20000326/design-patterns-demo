@@ -15,6 +15,6 @@ class Singleton {
 let s1 = Singleton.GetInstance();
 let s2 = Singleton.GetInstance();
 
-if (s1 == s2) {
+if (s1 === s2) {
     console.log("兩個物件是相同實體");
 }
