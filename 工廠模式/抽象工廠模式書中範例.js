@@ -1,76 +1,130 @@
-class IUser  {
-    Insert(user){}
-    GetUser(id){}
+class User {
+    constructor(name = "Jacky", age = 23) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+class Department {
+    constructor(name = "程式") {
+        this.name = name;
+    }
+}
+class DataAccess {
+    static db = "sqlserver";
+    // static db = "Access";
+
+    static CreateUser() {
+        let userResult = null;
+
+        switch (DataAccess.db) {
+            case "sqlserver":
+                userResult = new SqlserverUser();
+                break;
+            case "Access":
+                userResult = new AccessUser();
+        }
+
+        return userResult;
+    }
+
+    static CreateDepartment() {
+        let departmentResult = null;
+
+        switch (DataAccess.db) {
+            case "sqlserver":
+                departmentResult = new SqlserverDepartment();
+                break;
+            case "Access":
+                departmentResult = new AccessDepartment();
+        }
+
+        return departmentResult;
+    }
+}
+
+class IUser {
+    Insert() {}
+    GetUser() {}
 }
 
 class IDepartment {
-    Insert(user){}
-    GetDepartment(){}
+    Insert() {}
+    GetUser() {}
 }
 
-class SqlServerDepartment extends IDepartment{
-    Insert(user){
-        console.log('在sql server中給Department增加一條紀錄')
+class SqlserverDepartment extends IDepartment {
+    Insert(user) {
+        console.log("在sql server中給Department增加一條紀錄");
+        console.log({ user });
     }
-    GetDepartment(){
-        console.log('在sql server中根據得到的id得到Department表一條紀錄')
-    }
-}
-
-class AccessDepartment extends IDepartment{
-    Insert(user){
-        console.log('在Access中給Department增加一條紀錄')
-    }
-    GetDepartment(){
-        console.log('在Access中根據得到的id得到Department表一條紀錄')
+    Getdepartment(department) {
+        console.log("在sql server根據ID得到Department表一條紀錄");
+        console.log({ department });
     }
 }
 
-class SqlServerUser extends IUser{
-    Insert(user){
-        console.log('在sql server中給user增加一條紀錄')
+class AccessDepartment extends IDepartment {
+    Insert() {
+        console.log("在Access中給Department增加一條紀錄");
     }
-    GetUser(id){
-        console.log('在sql server中根據得到的id得到User表一條紀錄')
-    }
-}
-
-class AccessUser extends IUser{
-    Insert(user){
-        console.log('在AccessUser中給user增加一條紀錄')
-    }
-    GetUser(id){
-        console.log('在AccessUser中根據得到的id得到User表一條紀錄')
+    Getdepartment() {
+        console.log("在Access根據ID得到Department表一條紀錄");
     }
 }
 
-class IFactory {
-    CreateUserFactory(){}
-    CreateDepartmentFactory(){}
-}
-
-class SqlServerUserFactory extends IFactory{
-    CreateUserFactory(){
-        return new SqlServerUser()
+class SqlserverUser extends IUser {
+    Insert(user) {
+        console.log("在sql server中給User標增加一條紀錄");
+        console.log({ user });
     }
-    CreateUserFactory(){
-        return new SqlServerDepartment()
-    }
-}
-class AccessUserUserFactory extends IFactory{
-    CreateUserFactory(){
-        return new AccessUser()
-    }
-    CreateUserFactory(){
-        return new AccessDepartment()
+    GetUser(department) {
+        console.log("在sql server根據ID得到User表一條紀錄");
+        console.log({ department });
     }
 }
 
+class AccessUser extends IUser {
+    Insert() {
+        console.log("在Access中給User標增加一條紀錄");
+    }
+    GetUser() {
+        console.log("在Access根據ID得到User表一條紀錄");
+    }
+}
 
+// 抽象工廠
+class IFacroty {
+    CreateUser() {}
+    CreateDepartment() {}
+}
 
-// 用戶端程式碼
-let ConcreteSqlServerUserFactory = new SqlServerUserFactory()
-let getSqlServerUser = ConcreteSqlServerUserFactory.CreateUserFactory()
+class SqlServerFactory extends IFacroty {
+    CreateUser() {
+        return new SqlserverUser();
+    }
+    CreateDepartment() {
+        return new SqlserverDepartment();
+    }
+}
 
-getSqlServerUser.Insert()
-getSqlServerUser.GetUser()
+class AccessFactory extends IFacroty {
+    CreateUser() {
+        return new AccessUser();
+    }
+    CreateDepartment() {
+        return new AccessDepartment();
+    }
+}
+
+// 用戶
+let user = new User();
+let dept = new Department();
+
+let iuser = DataAccess.CreateUser();
+iuser.GetUser(user);
+iuser.Insert(user);
+
+let idepartment = DataAccess.CreateUser();
+idepartment.GetUser(dept);
+idepartment.Insert(dept);
