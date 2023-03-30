@@ -120,11 +120,19 @@ class AccessFactory extends IFacroty {
 // 用戶
 let user = new User();
 let dept = new Department();
+let dactory = new SqlServerFactory();
+let iuser = dactory.CreateUser();
+// 使用hash方法而不是switch效率較好
+let factory = {
+    sqlFactory: {
+        createUser: dactory.CreateUser,
+        createDepartment: dactory.CreateDepartment,
+    },
+};
 
-let iuser = DataAccess.CreateUser();
-iuser.GetUser(user);
-iuser.Insert(user);
+factory.sqlFactory.createUser().Insert(user);
+// let idepartment = AccessFactory.CreateUser();
+// idepartment.GetUser(dept);
+// idepartment.Insert(dept);
 
-let idepartment = DataAccess.CreateUser();
-idepartment.GetUser(dept);
-idepartment.Insert(dept);
+// 抽象工廠要以反射的方式來寫才比較正確，反射以字串作為判斷的條件傳入，並產生對應的實體
