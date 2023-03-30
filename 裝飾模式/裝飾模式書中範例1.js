@@ -26,7 +26,7 @@ class ConcreteDecoratorA extends Decorator {
     Operation() {
         super.Operation();
         this.addedState = "New State";
-        console.log("四體裝飾物件A的操作");
+        console.log("實體裝飾物件A的操作");
     }
 }
 
@@ -34,7 +34,7 @@ class ConcreteDecoratorB extends Decorator {
     Operation() {
         super.Operation();
         this.AddedBehavior();
-        console.log("四體裝飾物件B的操作");
+        console.log("實體裝飾物件B的操作");
         // console表示複雜程式碼()
     }
     AddedBehavior() {}
