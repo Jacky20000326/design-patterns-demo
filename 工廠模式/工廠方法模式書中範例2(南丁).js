@@ -50,9 +50,19 @@ class VolunteerFactory extends IFactory {
 //         return result;
 //     }
 // }
-
+let ConcreteVolunteerFactory = new VolunteerFactory();
 let ConcreteUndergraduateFactory = new UndergraduateFactory();
-let studentA = ConcreteUndergraduateFactory.createCreateNightingale();
+//user
+
+// js中的反射
+let factory = {
+    // 方法還沒要執行
+    Undergraduate: ConcreteUndergraduateFactory.createCreateNightingale,
+    Volunteer: ConcreteVolunteerFactory.createCreateNightingale,
+};
+
+let studentA = factory["Undergraduate"]();
+
 studentA.BuyRice();
 studentA.Sweep();
 studentA.Wash();
