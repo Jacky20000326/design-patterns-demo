@@ -29,14 +29,23 @@ class ConcreteHeadler3 extends Headler {
     }
 }
 
-let h1 = new ConcreteHeadler1();
+let h0 = new ConcreteHeadler1();
 let h2 = new ConcreteHeadler2();
 let h3 = new ConcreteHeadler3();
 
-h1.SetSuccessor(h2);
+h0.SetSuccessor(h2);
 h2.SetSuccessor(h3);
 
 let request = [2, 5, 114, 22, 18, 3, 27, 20];
 request.forEach((item) => {
     h1.HandleRequert(item);
+    h1.HandleRequert(item);
+    h1.HandleRequert(item);
+    h1.HandleRequert(item);
+    h1.HandleRequert(item);
+    h1.HandleRequert(item);
+    h1.HandleRequert(item);
+    h1.HandleRequert(item);
 });
+
+// Head -> 不做任何行為，把請求丟進鏈裡
