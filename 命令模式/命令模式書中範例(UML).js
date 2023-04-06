@@ -15,6 +15,7 @@ class ConcreteCommand extends Command {
     }
 }
 
+// 負責調用命令
 class Invoker {
     // 接收命令
     SetCommand(command) {
@@ -25,13 +26,14 @@ class Invoker {
         this.command.Execute();
     }
 }
-
+// 接收命令與執行命令
 class Receiver {
     Action() {
         console.log("執行請求");
     }
 }
 
+//客戶端
 let r = new Receiver();
 let c = new ConcreteCommand(r);
 
